@@ -1,0 +1,38 @@
+.parallax {
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    
+    background-size: cover;
+
+    display: flex; 
+    justify-content: center;
+    align-items: center; /*vertical*/
+
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+}
+
+
+.bg1 {
+    background-image: url("https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg");
+
+}
+
+
+.bg2 {
+    background-image: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630");
+}
+
+
+.text-block {
+    background-color: black;
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+
+    .calc {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    input, select, button {
+      margin: 5px;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="calc">
+    <input type="text" id="left" placeholder="Left number">
+
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+
+    <input type="text" id="right" placeholder="Right number">
+
+    <button onclick="calculate()">Try me!</button>
+  </div>
+
+  <script>
+    function calculate() {
+      const left = document.getElementById("left").value;
+      const right = document.getElementById("right").value;
+      const op = document.getElementById("operator").value;
+
+        // ^ → start of the string.
+        // \d → a digit (0–9).
+        // + → one or more digits.
+        // $ → end of the string.
+      if (!/^\d+$/.test(left) || !/^\d+$/.test(right)) {
+        alert("Error :(");
+        // console.log("Error :(")
+        return;
+      }
+
+      const a = parseInt(left);
+      const b = parseInt(right);
+      let result;
+
+      // handle zero division
+      if ((op === "/" || op === "%") && b === 0) {
+        alert("It's over 9000!");
+        console.error("It's over 9000!");
+        return;
+      }
+
+      // Perform calculation
+      switch (op) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "*": result = a * b; break;
+        case "/": result = a / b; break;
+        case "%": result = a % b; break;
+      }
+
+      alert(result);
+      console.log(result);
+    }
+
+    // Every 30 seconds, remind user
+    setInterval(() => {
+      alert("Please, use me...");
+    }, 30000);
+  </script>
+</body>
+</html>

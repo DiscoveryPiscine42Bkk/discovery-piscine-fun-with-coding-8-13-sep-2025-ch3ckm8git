@@ -1,0 +1,18 @@
+table {
+    width: 80%;
+    border-collapse: collapse; /* table border merge*/
+    margin: 50px auto;
+}
+td {
+    width: 50%;
+    height: 100px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+}
+.first {
+    background-color: greenyellow;
+}
+.second {
+    background-color: pink; 
+}
