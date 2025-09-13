@@ -2,65 +2,70 @@ const list = document.getElementById("ft_list");
 
 // Load TODOs on page start
 window.onload = () => {
-  const saved = getCookie();
-  if (saved) {
-    const todos = JSON.parse(saved);
-    todos.forEach(text => addTodo(text, false)); // false = don't re-save
-  }
+    const saved = getCookie();
+    if (saved) {
+        // const todos = JSON.parse(saved);
+        saved.forEach(text => addTodo(text, false, false)); // false = don't re-save
+        // false = don't save again, false = append (old items stay in order)
+    }
 };
 
-// Add new TODO
+// Add new todo
 function newTodo() {
-  const text = prompt("Enter a new TO DO:");
-  if (text && text.trim() !== "") {
-    addTodo(text.trim(), true);
-  }
+    const text = prompt("Enter a new TO DO:");
+    if (text && text.trim() !== "") {
+        addTodo(text.trim(), true, true);
+    }
 }
 
-// Add TODO element into list
-function addTodo(text, save) {
-  const todo = document.createElement("div");
-  todo.textContent = text;
+// Add todo element into list
+function addTodo(text, save, putOnTop) {
+    const todo = document.createElement("div");
+    todo.textContent = text;
 
-  // Click to remove
-  todo.onclick = () => {
-    if (confirm("Do you want to remove this TO DO?")) {
-      list.removeChild(todo);
-      saveTodos();
+    // Click to remove
+    todo.onclick = () => {
+        if (confirm("Do you want to remove this TO DO?")) {
+            list.removeChild(todo);
+            saveTodos();
+        }
+    };
+
+
+    if (putOnTop) {
+        // Put new TODO at the top insert before the first child
+        list.insertBefore(todo, list.firstChild);
+    } else {
+        // when loaded no need to put on Top
+        list.append(todo)
     }
-  };
 
-  // Put new TODO at the top
-  list.insertBefore(todo, list.firstChild);
-
-  if (save) saveTodos();
+    // if save is true ( when new Todo)
+    if (save) saveTodos();
 }
 
 // Save all TODOs into cookie
 function saveTodos() {
-  const todos = [];
-  list.querySelectorAll("div").forEach(div => todos.push(div.textContent));
-  setCookie(JSON.stringify(todos));
+    const todos = [];
+    list.querySelectorAll("div").forEach(div => todos.push(div.textContent));
+    setCookie(JSON.stringify(todos)); // turn it into string so we can store cookie which not accept list
 }
-
-// ---- Simple Cookie Helpers ----
 
 // Save cookie (name is always "todos")
 function setCookie(value) {
-  document.cookie = "todos=" + value;
+    document.cookie = "todos=" + value;
 }
 
 // Get cookie (always return "todos" value)
 function getCookie() {
-  const cookies = document.cookie.split("; ");
+    const cookie = document.cookie
 
-//   cookie -> list ['todos=["abcd","abc"]']
-  for (let c of cookies) {
-    console.log(c)
-    // console.log(JSON.parse(c))
-    if (c.startsWith("todos=")) {
-      return decodeURIComponent(c.substring("todos=".length));
+    // cookie= 'todos=["abcd","abc"]'
+    // console.log(JSON.parse(cookies[0].substring(6)))
+    if (cookie.startsWith("todos=")) {
+        // todos=  6 characters
+        return (JSON.parse(cookie.substring(6)))
     }
-  }
-  return null;
+
+    return null;
 }
