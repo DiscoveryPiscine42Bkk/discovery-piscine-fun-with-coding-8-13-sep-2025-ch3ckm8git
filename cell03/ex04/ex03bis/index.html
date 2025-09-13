@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TODO List (jQuery)</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    #some_list {
+      margin-top: 20px;
+    }
+
+    #some_list div {
+      background: #d1dfe7;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: lesome;
+    }
+
+    #some_list div:hover {
+      background: #7ea1b3;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #4c63af;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5daac1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <button id="newTodoBtn">New</button>
+    <div id="some_list"></div>
+  </div>
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="todo.js">
+
+  </script>
+</body>
+
+</html>

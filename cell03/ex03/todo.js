@@ -1,4 +1,4 @@
-const list = document.getElementById("ft_list");
+const list = document.getElementById("some_list");
 
 // Load TODOs on page start
 window.onload = () => {
